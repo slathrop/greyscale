@@ -170,12 +170,12 @@ app.on('start', function () {
 
     var pgConString = 'postgres://' + pgUser + ':' + pgPassword + '@' + pgHost + ':' + pgPort;
 
-    pg.defaults.poolSize = 100;
     pg.connect(pgConString + '/' + pgDbName, function (err, client, done) {
         if (err) {
             debug('Could not connect to the database.');
         }
     });
+    pg.end();
 
     function startServer() {
         // Start server
